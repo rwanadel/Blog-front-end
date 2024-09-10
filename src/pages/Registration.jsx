@@ -65,25 +65,38 @@ export default function Registration() {
 
   return (
     <div
-      style={{ height: "735px", margin: "0", backgroundColor: "#be7c68" }}
-      className=" w-full p-44 grid grid-cols-2 "
+      style={{ height: "auto", margin: "0", backgroundColor: "#be7c68" }}
+      className="w-full p-10 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-8"
     >
+      {/* Image */}
+      <div className="md:hidden flex justify-center font-mono font-bold text-4xl text-white">
+        R/Blog
+      </div>
+
+      <div className="hidden md:flex justify-center">
+        <img
+          className="w-80 h-96 object-cover  rounded-lg"
+          src="4.jfif"
+          alt="Cover Image"
+        />
+      </div>
+      {/* Form */}
       <form
-        style={{ backgroundColor: " #F5F5F5" }}
+        style={{ backgroundColor: "#F5F5F5" }}
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto border p-5  rounded-lg"
+        className="max-w-md mx-auto border p-5 rounded-lg"
       >
         <div>
           <h1
             style={{ color: "#be7c68" }}
-            className="text-center text-3xl pb-6 text-sky-700 font-bold"
+            className="text-center text-3xl pb-6 font-bold"
           >
             Sign up now!
           </h1>
         </div>
 
         <div className="flex gap-3">
-          {/* first name */}
+          {/* First name */}
           <div className="mb-4 w-1/2">
             <label
               htmlFor="firstName"
@@ -105,7 +118,7 @@ export default function Registration() {
             )}
           </div>
 
-          {/* last name */}
+          {/* Last name */}
           <div className="mb-4 w-1/2">
             <label
               htmlFor="lastName"
@@ -128,7 +141,7 @@ export default function Registration() {
           </div>
         </div>
 
-        {/* email */}
+        {/* Email */}
         <div className="mb-4">
           <label
             htmlFor="email"
@@ -148,7 +161,7 @@ export default function Registration() {
           {errors.email && <span className="text-red-500">{errors.email}</span>}
         </div>
 
-        {/* password */}
+        {/* Password */}
         <div className="mb-4">
           <label
             htmlFor="password"
@@ -170,7 +183,7 @@ export default function Registration() {
           )}
         </div>
 
-        {/* confirm password */}
+        {/* Confirm Password */}
         <div className="mb-4">
           <label
             htmlFor="confirmPassword"
@@ -180,7 +193,10 @@ export default function Registration() {
           </label>
           <input
             onChange={(event) =>
-              setFormData({ ...formData, confirmPassword: event.target.value })
+              setFormData({
+                ...formData,
+                confirmPassword: event.target.value,
+              })
             }
             type="password"
             id="confirmPassword"
@@ -200,17 +216,12 @@ export default function Registration() {
           Register
         </button>
         <p className="">
-          Already have account?{" "}
+          Already have an account?{" "}
           <Link to="/login" className="text-black-600">
             Login Now
           </Link>
         </p>
       </form>
-      <img
-        className="w-80 h-96 object-cover rounded-lg "
-        src="4.jfif"
-        alt="Cover Image"
-      />
     </div>
   );
 }
