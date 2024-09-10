@@ -40,7 +40,7 @@ export default function Login() {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/v1/users/login",
+          "https://react-blog-api-by-rwan.glitch.me/api/v1/users/login",
           formData
         );
         console.log(res.data);
@@ -49,7 +49,7 @@ export default function Login() {
         localStorage.setItem("token", res.data.token); // Store token in localStorage
         login(res.data.user); // Log in the user by updating the context
 
-        console.log(res.data.token)
+        console.log(res.data.token);
         // Show success notification and redirect
         alert("Login Successful");
         console.log("hi");
@@ -60,92 +60,96 @@ export default function Login() {
         console.log("Login error:", error);
       }
     }
-    
   };
 
   return (
-    <div style={{height:'735px',margin:'0',backgroundColor:'#be7c68'}} className=" w-full p-44 grid grid-cols-2 ">
-    <img
-    className="w-80 h-96 object-cover rounded-lg "
-    src="3.jfif"
-    alt="Cover Image"
-  />
-    <form
-      onSubmit={handleSubmit}
-      style={{backgroundColor:' #F5F5F5'}}
-      className="max-w-md mx-auto border p-5  rounded-lg w-96 h-96 "
+    <div
+      style={{ height: "735px", margin: "0", backgroundColor: "#be7c68" }}
+      className=" w-full p-44 grid grid-cols-2 "
     >
-      <div>
-        <h1 style={{color:'#be7c68'}} className="text-center text-3xl pb-6  font-bold">
-          Log In
-        </h1>
-      </div>
-
-      <div >
-        {/* email */}
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Email address
-          </label>
-          <input
-            onChange={(event) =>
-              setFormData({ ...formData, email: event.target.value })
-            }
-            type="email"
-            id="email"
-            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
-              errors.email ? "border-red-500" : ""
-            }`}
-            placeholder="Enter email"
-          />
-          {errors.email && <span className="text-red-500">{errors.email}</span>}
-        </div>
-
-        {/* password */}
-        <div className="mb-4">
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Password
-          </label>
-          <input
-            onChange={(event) =>
-              setFormData({ ...formData, password: event.target.value })
-            }
-            type="password"
-            id="password"
-            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
-              errors.password ? "border-red-500" : ""
-            }`}
-            placeholder="Password"
-          />
-          {errors.password && (
-            <span className="text-red-500">{errors.password}</span>
-          )}
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        style={{backgroundColor:'#be7c68'}}
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      <img
+        className="w-80 h-96 object-cover rounded-lg "
+        src="3.jfif"
+        alt="Cover Image"
+      />
+      <form
+        onSubmit={handleSubmit}
+        style={{ backgroundColor: " #F5F5F5" }}
+        className="max-w-md mx-auto border p-5  rounded-lg w-96 h-96 "
       >
-        Login
-      </button>
-      <p className="">
-        Already have account?{" "}
-        <Link to="/sign-up" className="text-black-600">
-          Register Now
-        </Link>
-      </p>
-    </form>
-    
-   
-   
+        <div>
+          <h1
+            style={{ color: "#be7c68" }}
+            className="text-center text-3xl pb-6  font-bold"
+          >
+            Log In
+          </h1>
+        </div>
+
+        <div>
+          {/* email */}
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email address
+            </label>
+            <input
+              onChange={(event) =>
+                setFormData({ ...formData, email: event.target.value })
+              }
+              type="email"
+              id="email"
+              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+                errors.email ? "border-red-500" : ""
+              }`}
+              placeholder="Enter email"
+            />
+            {errors.email && (
+              <span className="text-red-500">{errors.email}</span>
+            )}
+          </div>
+
+          {/* password */}
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
+            <input
+              onChange={(event) =>
+                setFormData({ ...formData, password: event.target.value })
+              }
+              type="password"
+              id="password"
+              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+                errors.password ? "border-red-500" : ""
+              }`}
+              placeholder="Password"
+            />
+            {errors.password && (
+              <span className="text-red-500">{errors.password}</span>
+            )}
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          style={{ backgroundColor: "#be7c68" }}
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Login
+        </button>
+        <p className="">
+          Already have account?{" "}
+          <Link to="/sign-up" className="text-black-600">
+            Register Now
+          </Link>
+        </p>
+      </form>
     </div>
   );
 }

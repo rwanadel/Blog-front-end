@@ -34,7 +34,9 @@ export default function CardOfPost() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/v1/posts`);
+        const response = await axios.get(
+          `https://react-blog-api-by-rwan.glitch.me/api/v1/posts`
+        );
         console.log("Fetched posts:", response.data); // Log the data to check its structure
         setPosts(response.data); // Assuming response.data is an array
       } catch (error) {
@@ -83,7 +85,7 @@ export default function CardOfPost() {
 //   useEffect(() => {
 //     const fetchPosts = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/v1/posts");
+//         const response = await axios.get("https://react-blog-api-by-rwan.glitch.me/api/v1/posts");
 //         console.log("Fetched posts:", response.data); // Log the data to check its structure
 //         setPosts(response.data); // Assuming response.data is an array
 //       } catch (error) {

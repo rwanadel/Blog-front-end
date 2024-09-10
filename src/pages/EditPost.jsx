@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
-export default function NewPost() {
+export default function EditPost() {
   const navigate = useNavigate();
 
   // Initialize react-hook-form
