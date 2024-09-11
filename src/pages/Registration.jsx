@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Registration() {
   const [formData, setFormData] = useState({
-    firstName: "",
+    name: "",
     lastName: "",
     email: "",
     password: "",
@@ -19,8 +19,8 @@ export default function Registration() {
     e.preventDefault();
     let validationErrors = {};
 
-    if (!formData.firstName) {
-      validationErrors.firstName = "First name is required";
+    if (!formData.name) {
+      validationErrors.name = "First name is required";
     }
 
     if (!formData.lastName) {
@@ -99,23 +99,21 @@ export default function Registration() {
           {/* First name */}
           <div className="mb-4 w-1/2">
             <label
-              htmlFor="firstName"
+              htmlFor="name"
               className="block text-sm font-medium text-gray-700"
             >
               First Name
             </label>
             <input
               onChange={(event) =>
-                setFormData({ ...formData, firstName: event.target.value })
+                setFormData({ ...formData, name: event.target.value })
               }
               type="text"
-              id="firstName"
+              id="name"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="Enter first name"
             />
-            {errors.firstName && (
-              <span className="text-red-500">{errors.firstName}</span>
-            )}
+            {errors.name && <span className="text-red-500">{errors.name}</span>}
           </div>
 
           {/* Last name */}
