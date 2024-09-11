@@ -119,6 +119,7 @@ import { AuthContext } from "../context/AuthContext";
 export default function CardOfPost() {
   const { user } = useContext(AuthContext);
   const userId = user._id;
+  console.log(user);
   const [posts, setPosts] = useState([]); // State to store the fetched posts
 
   // Function to delete a specific post
@@ -162,7 +163,8 @@ export default function CardOfPost() {
         const response = await axios.get(
           `https://react-blog-api-by-rwan.glitch.me/api/v1/posts`
         );
-        setPosts(response.data);
+        setPosts(response.data.posts);
+        console.log(response);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -182,22 +184,40 @@ export default function CardOfPost() {
             <figure>
               <img src={post.images[0]} alt="post" className="w-full h-auto" />
             </figure>
+            <div className="flex gap-5 m-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+              </svg>
+              <h1 className="text-2xl">{post?.user?.name}</h1>
+            </div>
+
             <div className="card-body">
               <h2 className="card-title">{post.title}</h2>
               <p>{post.description}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">View post</button>
-
-                {userId === post.userId && (
-                  <div>
+                {userId === post?.user?._id && (
+                  <div className="flex flex-col sm:flex-row justify-start items-center space-y-3 sm:space-y-0 sm:space-x-4">
                     <Link
                       to={`/edit/${post._id}`}
-                      className="btn btn-sm btn-primary"
+                      style={{ backgroundColor: "#be7c68" }}
+                      className="btn btn-md text-white text-lg sm:text-xl md:text-2xl w-full sm:w-auto"
                     >
                       Edit
                     </Link>
                     <button
-                      className="btn btn-sm btn-primary"
+                      className="btn btn-md border-2 text-lg sm:text-xl md:text-2xl w-full sm:w-auto"
+                      style={{ borderColor: "#be7c68" }}
                       onClick={() => deletePost(post._id)}
                     >
                       Delete

@@ -65,7 +65,7 @@ export default function Registration() {
 
   return (
     <div
-      style={{ height: "auto", margin: "0", backgroundColor: "#be7c68" }}
+      style={{ height: "735px", margin: "0", backgroundColor: "#be7c68" }}
       className="w-full p-10 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-8"
     >
       {/* Image */}

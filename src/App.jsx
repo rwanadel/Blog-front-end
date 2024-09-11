@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NewPost from "./pages/NewPost";
 import Landing from "./pages/Landing";
 import EditPost from "./pages/EditPost";
+import Error from "./pages/Error";
 
 // <Navbar />
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/NewPost" element={<NewPost />} />
           <Route path="/edit/:id" element={<EditPost />}></Route>
+          <Route path="/*" element={<Error />}></Route>
         </Routes>
       </BrowserRouter>
     </>

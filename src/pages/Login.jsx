@@ -67,17 +67,22 @@ export default function Login() {
   return (
     <div
       style={{ height: "735px", margin: "0", backgroundColor: "#be7c68" }}
-      className=" w-full p-44 grid grid-cols-2 "
+      className="w-full p-10 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-8"
     >
-      <img
-        className="w-80 h-96 object-cover rounded-lg "
-        src="3.jfif"
-        alt="Cover Image"
-      />
+      <div className="md:hidden flex justify-center font-mono font-bold text-4xl text-white">
+        R/Blog
+      </div>
+      <div className="hidden md:flex justify-center">
+        <img
+          className="w-80 h-96 object-cover  rounded-lg"
+          src="3.jfif"
+          alt="Cover Image"
+        />
+      </div>
       <form
         onSubmit={handleSubmit}
         style={{ backgroundColor: " #F5F5F5" }}
-        className="max-w-md mx-auto border p-5  rounded-lg w-96 h-96 "
+        className="max-w-md mx-auto border p-5 rounded-lg h-96"
       >
         <div>
           <h1
