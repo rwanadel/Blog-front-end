@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Logout() {
   const { logout } = useContext(AuthContext);
@@ -9,7 +9,7 @@ export default function Logout() {
 
   useEffect(() => {
     logout();
-    navigate('/login');
+    navigate("/");
   }, [logout, navigate]);
 
   return null; // This component doesn't render anything

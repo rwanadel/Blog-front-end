@@ -8,6 +8,7 @@ import Logout from "./components/Logout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NewPost from "./pages/NewPost";
 import Landing from "./pages/Landing";
+import EditPost from "./pages/EditPost";
 
 // <Navbar />
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/sign-up" element={<Registration />}></Route>
           <Route path="/logout" element={<Logout />} />
           <Route path="/NewPost" element={<NewPost />} />
+          <Route path="/edit/:id" element={<EditPost />}></Route>
         </Routes>
       </BrowserRouter>
     </>

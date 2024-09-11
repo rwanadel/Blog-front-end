@@ -47,7 +47,9 @@ export default function Login() {
 
         // If successful, store the token and log in the user
         localStorage.setItem("token", res.data.token); // Store token in localStorage
-        login(res.data.user); // Log in the user by updating the context
+        login(res.data.token, res.data.user);
+        //const user = res.data.user;
+        //login(user); // Log in the user by updating the context4
 
         console.log(res.data.token);
         // Show success notification and redirect

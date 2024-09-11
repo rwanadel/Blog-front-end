@@ -1,10 +1,17 @@
 import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 export default function EditPost() {
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    console.log("Post ID from useParams:", id);
+  }, [id]);
+  console.log("Post ID:", id);
 
   // Initialize react-hook-form
   const {
@@ -29,8 +36,8 @@ export default function EditPost() {
       }
 
       // Send the post request with the form data and token in headers
-      const res = await axios.post(
-        "https://react-blog-api-by-rwan.glitch.me/api/v1/posts",
+      const res = await axios.patch(
+        `https://react-blog-api-by-rwan.glitch.me/api/v1/posts/${id}`,
         formData,
         {
           headers: {
@@ -70,7 +77,7 @@ export default function EditPost() {
               style={{ color: "#be7c68" }}
               className="text-center text-3xl pb-6 text-sky-700 font-bold"
             >
-              Add New Post
+              Edit Post
             </h1>
           </div>
 

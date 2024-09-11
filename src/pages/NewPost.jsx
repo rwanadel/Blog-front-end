@@ -1,9 +1,15 @@
+//
+
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 export default function NewPost() {
+  const { user } = useContext(AuthContext);
+  const userId = user?._id; // Safely access user._id
   const navigate = useNavigate();
 
   // Initialize react-hook-form
@@ -19,8 +25,16 @@ export default function NewPost() {
     formData.set("description", data.description);
     formData.set("images", data.images[0]); // Getting the first file from the input
 
+    // Include the userId in the form data
+    if (userId) {
+      formData.set("userId", userId);
+    } else {
+      alert("User ID not found. Please log in.");
+      return;
+    }
+
     const token = localStorage.getItem("token");
-    console.log(token);
+
     try {
       // Ensure the token is available
       if (!token) {
@@ -39,7 +53,7 @@ export default function NewPost() {
           },
         }
       );
-      console.log(token);
+
       console.log("Response:", res.data);
       alert("Post created successfully");
       navigate("/home");
