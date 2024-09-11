@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-//import Navbar from './components/Navbar'
+
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import Home from "./pages/Home";
@@ -11,7 +11,6 @@ import Landing from "./pages/Landing";
 import EditPost from "./pages/EditPost";
 import Error from "./pages/Error";
 
-// <Navbar />
 function App() {
   return (
     <>

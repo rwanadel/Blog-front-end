@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
@@ -6,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 export default function Login() {
-  const { login } = useContext(AuthContext); // Context for user authentication
+  const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,29 +13,24 @@ export default function Login() {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  // Validation and login logic
   const handleSubmit = async (e) => {
     e.preventDefault();
     let validationErrors = {};
 
-    // Manual validation for email
     if (!formData.email) {
       validationErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       validationErrors.email = "Email is not valid";
     }
 
-    // Manual validation for password
     if (!formData.password) {
       validationErrors.password = "Password is required";
     } else if (formData.password.length < 8) {
       validationErrors.password = "Password must be at least 8 characters";
     }
 
-    // Set errors if validation fails
     setErrors(validationErrors);
 
-    // If no errors, proceed with the login request
     if (Object.keys(validationErrors).length === 0) {
       try {
         const res = await axios.post(
@@ -45,19 +39,15 @@ export default function Login() {
         );
         console.log(res.data);
 
-        // If successful, store the token and log in the user
-        localStorage.setItem("token", res.data.token); // Store token in localStorage
+        localStorage.setItem("token", res.data.token);
         login(res.data.token, res.data.user);
-        //const user = res.data.user;
-        //login(user); // Log in the user by updating the context4
 
         console.log(res.data.token);
-        // Show success notification and redirect
+
         alert("Login Successful");
         console.log("hi");
         navigate("/home");
       } catch (error) {
-        // Show error notification if the login fails
         alert("Login failed");
         console.log("Login error:", error);
       }

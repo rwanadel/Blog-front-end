@@ -1,5 +1,3 @@
-//
-
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router";
 import axios from "axios";
@@ -9,10 +7,9 @@ import { useContext } from "react";
 
 export default function NewPost() {
   const { user } = useContext(AuthContext);
-  const userId = user?._id; // Safely access user._id
+  const userId = user?._id;
   const navigate = useNavigate();
 
-  // Initialize react-hook-form
   const {
     register,
     handleSubmit,
@@ -23,9 +20,8 @@ export default function NewPost() {
     const formData = new FormData();
     formData.set("title", data.title);
     formData.set("description", data.description);
-    formData.set("images", data.images[0]); // Getting the first file from the input
+    formData.set("images", data.images[0]);
 
-    // Include the userId in the form data
     if (userId) {
       formData.set("userId", userId);
     } else {
@@ -36,20 +32,18 @@ export default function NewPost() {
     const token = localStorage.getItem("token");
 
     try {
-      // Ensure the token is available
       if (!token) {
         alert("You must be logged in to create a post.");
         return;
       }
 
-      // Send the post request with the form data and token in headers
       const res = await axios.post(
         "https://react-blog-api-by-rwan.glitch.me/api/v1/posts",
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: token, // Include token in the Authorization header
+            Authorization: token,
           },
         }
       );

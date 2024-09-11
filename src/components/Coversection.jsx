@@ -1,23 +1,3 @@
-// import Navbar from "./Navbar";
-
-// export default function Coversection() {
-//   return (
-//     <div className="grid grid-cols-3 relative">
-//       <div style={{backgroundColor:''}} className="col-span-2 text-center h-2000 flex flex-col items-center " >
-//       <Navbar/>
-//       <h1  className="font-mono font-bold text-7xl m-5">Welcome to R/Blog</h1>
-//       <p style={{width:"600px"}} className=" m-auto text-start text-gray-500">Discover a world of insightful articles, engaging stories, and expert perspectives.
-//        Whether you’re passionate about technology, eager to explore new ideas,
-//         or just looking for thought-provoking content,
-//          R/Blog offers a rich blend of topics to spark your curiosity and enrich your knowledge.</p>
-//       </div>
-//       <div className="col-span-1 relative " style={{backgroundColor:'#be7c68 ',height:'600px'}}>
-//       <div className="w-4/5 h-97 absolute top-20 right-100  "><img className="w-4/5 h-97 absolute top-0 right-0 bottom-50 left-0" src="1.jfif"/></div>
-//       </div>
-//     </div>
-//   )
-// }
-
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 

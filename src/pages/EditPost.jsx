@@ -13,7 +13,6 @@ export default function EditPost() {
   }, [id]);
   console.log("Post ID:", id);
 
-  // Initialize react-hook-form
   const {
     register,
     handleSubmit,
@@ -24,25 +23,23 @@ export default function EditPost() {
     const formData = new FormData();
     formData.set("title", data.title);
     formData.set("description", data.description);
-    formData.set("images", data.images[0]); // Getting the first file from the input
+    formData.set("images", data.images[0]);
 
     const token = localStorage.getItem("token");
     console.log(token);
     try {
-      // Ensure the token is available
       if (!token) {
         alert("You must be logged in to create a post.");
         return;
       }
 
-      // Send the post request with the form data and token in headers
       const res = await axios.patch(
         `https://react-blog-api-by-rwan.glitch.me/api/v1/posts/${id}`,
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: token, // Include token in the Authorization header
+            Authorization: token,
           },
         }
       );
